@@ -1,0 +1,7 @@
+.bg-auth-register{
+  background-image: url("../../assets/gb_login_register.jpg");
+  background-position: center center;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}

@@ -1,0 +1,42 @@
+<app-auth-container>
+  <div class="text-center">
+    <h1 class="fw-bold">Sign in</h1>
+    <p class="text-secondary">Please enter your login details</p>
+  </div>
+  <form [formGroup]="credentials" (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+      <label for="username" class="form-label">Username</label>
+      <input
+        id="username"
+        type="text"
+        class="form-control"
+        name="username"
+        required>
+    </div>
+    <div class="mb-4">
+      <label for="password" class="form-label">Password</label>
+      <input
+        id="password"
+        type="password"
+        class="form-control"
+        name="password"
+        required>
+    </div>
+    <div class="mb-4 form-check">
+      <input
+        id="remember"
+        type="checkbox"
+        class="form-check-input"
+        name="rememberMe"
+      />
+      <label class="form-check-label" for="remember">Remember me</label>
+    </div>
+    <div class="d-grid">
+      <button class="btn btn-outline-success">Sing in</button>
+    </div>
+    <div class="my-3">
+      <span>No account yet? <a routerLink="/auth/sing-up" class="text-info">Register now</a></span>
+    </div>
+  </form>
+</app-auth-container>
+<router-outlet/>
