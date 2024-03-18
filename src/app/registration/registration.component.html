@@ -28,7 +28,10 @@
         id="gender"
         formControlName="gender"
         class="form-select">
-        <option selected>Select your gender</option>
+        <option value="" selected>Select your gender</option>
+        @for (gender of genders; track gender.code) {
+          <option value="{{gender.code}}">{{ gender.display }}</option>
+        }
       </select>
     </div>
     <div class="mb-4">
