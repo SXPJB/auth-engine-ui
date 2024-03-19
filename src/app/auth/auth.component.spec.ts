@@ -1,6 +1,8 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AuthComponent } from './auth.component';
+import {AuthComponent} from './auth.component';
+import {ActivatedRoute} from "@angular/router";
+import {of} from "rxjs";
 
 describe('AuthComponent', () => {
   let component: AuthComponent;
@@ -8,10 +10,13 @@ describe('AuthComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AuthComponent]
+      imports: [AuthComponent],
+      providers: [
+        {provide: ActivatedRoute, useValue: {paramMap: of()}}
+      ]
     })
-    .compileComponents();
-    
+      .compileComponents();
+
     fixture = TestBed.createComponent(AuthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
