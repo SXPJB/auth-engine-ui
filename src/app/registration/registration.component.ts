@@ -1,9 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {RouterLink, RouterOutlet} from "@angular/router";
-import {AuthContainerComponent} from "../auth-container/auth-container.component";
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {RegistrationService} from "./registration.service";
-import {GenderResponse} from "../../types/responses";
+import { Component, type OnInit } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { AuthContainerComponent } from '../auth-container/auth-container.component';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { RegistrationService } from './registration.service';
+import { GenderResponse } from '../../types/responses';
 
 @Component({
   selector: 'app-registration',
@@ -13,66 +19,63 @@ import {GenderResponse} from "../../types/responses";
     AuthContainerComponent,
     RouterLink,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   templateUrl: './registration.component.html',
 })
 export class RegistrationComponent implements OnInit {
+  constructor(private readonly registrationService: RegistrationService) {}
 
-  constructor(private registrationService: RegistrationService) { }
-
-  genders: GenderResponse[] | undefined
+  genders: GenderResponse[] | undefined;
 
   userInfo = new FormGroup({
     firstName: new FormControl('', [
       Validators.required,
       Validators.minLength(2),
-      Validators.maxLength(50)
+      Validators.maxLength(50),
     ]),
     lastName: new FormControl('', [
       Validators.required,
       Validators.minLength(2),
-      Validators.maxLength(50)
+      Validators.maxLength(50),
     ]),
-    email: new FormControl('', [
-      Validators.required,
-      Validators.email
-    ]),
-    gender: new FormControl('', [
-      Validators.required
-    ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    gender: new FormControl('', [Validators.required]),
     username: new FormControl('', [
       Validators.required,
       Validators.minLength(4),
-      Validators.maxLength(50)
+      Validators.maxLength(50),
     ]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(8)
+      Validators.minLength(8),
     ]),
     confirmPassword: new FormControl('', [
       Validators.required,
-      Validators.minLength(8)
+      Validators.minLength(8),
     ]),
-  },)
+  });
 
-  onSubmit() {
+  onSubmit(): void {
     console.log(this.userInfo.value);
     if (!this.isPasswordMatch()) {
-      console.log("Password does not match")
-      return;
+      console.log('Password does not match');
     }
   }
 
-  isPasswordMatch() {
-    return this.userInfo.controls.password.value === this.userInfo.controls.confirmPassword.value;
+  isPasswordMatch(): boolean {
+    return (
+      this.userInfo.controls.password.value ===
+      this.userInfo.controls.confirmPassword.value
+    );
   }
 
-  ngOnInit() {
-    this.registrationService.findAllGenders()
-      .subscribe(res => {
-        this.genders = res.data.map(g => ({code: g.code, display: g.display}));
-      })
+  ngOnInit(): void {
+    this.registrationService.findAllGenders().subscribe((res) => {
+      this.genders = res.data.map((g) => ({
+        code: g.code,
+        display: g.display,
+      }));
+    });
   }
-
 }

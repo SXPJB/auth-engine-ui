@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { type ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AuthContainerComponent } from './auth-container.component';
 
@@ -8,10 +8,9 @@ describe('AuthContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AuthContainerComponent]
-    })
-    .compileComponents();
-    
+      imports: [AuthContainerComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(AuthContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

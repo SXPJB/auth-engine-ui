@@ -1,8 +1,13 @@
-import {Component} from '@angular/core';
-import {NgOptimizedImage} from "@angular/common";
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {RouterLink, RouterOutlet} from "@angular/router";
-import {AuthContainerComponent} from "../auth-container/auth-container.component";
+import { Component } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { AuthContainerComponent } from '../auth-container/auth-container.component';
 
 @Component({
   selector: 'app-auth',
@@ -13,7 +18,7 @@ import {AuthContainerComponent} from "../auth-container/auth-container.component
     RouterOutlet,
     AuthContainerComponent,
     RouterLink,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   templateUrl: './auth.component.html',
 })
@@ -22,10 +27,9 @@ export class AuthComponent {
     username: new FormControl(''),
     password: new FormControl(''),
     rememberMe: new FormControl(''),
+  });
 
-  })
-
-  onSubmit() {
+  onSubmit(): void {
     console.log('Submitting...');
 
     console.log(this.credentials.value);
