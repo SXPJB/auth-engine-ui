@@ -42,13 +42,13 @@ jobs:
       - name: Run tests
         run: npm run test:no-watch
   build:
-    needs: [ test ]
+    needs: [ lint, test ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@vv4
+        uses: actions/checkout@v4
       - name: Use Node.js ${{ env.node_version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node_version }}
       - name: Install dependencies
