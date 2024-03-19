@@ -2,14 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {GenderResponse, HttpResponse} from "../../types/responses";
-import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistrationService {
 
-  private findGenders = `${environment.apiUrl}/catalog/findAllGenders`
+  private findGenders = `/catalog/findAllGenders`
 
   constructor(private http: HttpClient) {
   }
