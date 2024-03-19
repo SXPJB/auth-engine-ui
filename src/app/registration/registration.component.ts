@@ -8,8 +8,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { type RegistrationService } from './registration.service';
-import { type GenderResponse } from '../../types/responses';
+import { RegistrationService } from './registration.service';
+import { GenderResponse } from '../../types/responses';
 
 @Component({
   selector: 'app-registration',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { type HttpClient } from '@angular/common/http';
-import { type Observable } from 'rxjs';
-import { type GenderResponse, type HttpResponse } from '../../types/responses';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { GenderResponse, HttpResponse } from '../../types/responses';
 
 @Injectable({
   providedIn: 'root',
