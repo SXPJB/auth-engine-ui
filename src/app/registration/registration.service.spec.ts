@@ -17,11 +17,7 @@ describe('RegistrationService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should have a findAllGenders method', () => {
-    expect(service.findAllGenders).toBeTruthy();
-  })
-
-  it("should have a findAllGenders method that returns an observable", () => {
+  it('should have a findAllGenders method that returns an observable', () => {
     expect(service.findAllGenders()).toBeTruthy();
-  })
+  });
 });
