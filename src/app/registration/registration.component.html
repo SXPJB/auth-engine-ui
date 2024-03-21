@@ -3,74 +3,125 @@
     <h1 class="fw-bold">Sign up</h1>
     <p class="text-secondary">Please put the following information</p>
   </div>
-  <form [formGroup]="userInfo" (ngSubmit)="onSubmit()">
-    <div class="mb-4">
+  <form class="needs-validation" [formGroup]="userInfo" (ngSubmit)="onSubmit()">
+    <div class="mb-2">
       <label for="name" class="form-label">Name</label>
       <input
         id="name"
         type="text"
         formControlName="firstName"
         class="form-control"
+        [ngClass]="{'is-invalid': userInfo.controls.firstName.invalid && userInfo.controls.firstName.touched, 'is-valid': userInfo.controls.firstName.valid && userInfo.controls.firstName.touched}"
         placeholder="Enter your name"/>
+      @if (userInfo.controls.firstName.invalid && userInfo.controls.firstName.touched) {
+        <div class="invalid-feedback">
+          Please enter your name
+        </div>
+      }
     </div>
-    <div class="mb-4">
+    <div class="mb-2">
       <label for="last_name" class="form-label">Last Name</label>
       <input
         id="last_name"
         type="text"
         formControlName="lastName"
         class="form-control"
+        [ngClass]="{'is-invalid': userInfo.controls.lastName.invalid && userInfo.controls.lastName.touched, 'is-valid': userInfo.controls.lastName.valid && userInfo.controls.lastName.touched}"
         placeholder="Enter your last name"/>
+      @if (userInfo.controls.lastName.invalid && userInfo.controls.lastName.touched) {
+        <div class="invalid-feedback">
+          Please enter your last name
+        </div>
+      }
     </div>
-    <div class="mb-4">
+    <div class="mb-2">
       <label for="gender" class="form-label">Gender</label>
       <select
         id="gender"
         formControlName="gender"
-        class="form-select">
+        class="form-select"
+        [ngClass]="{'is-invalid': userInfo.controls.gender.invalid && userInfo.controls.gender.touched, 'is-valid': userInfo.controls.gender.valid && userInfo.controls.gender.touched}"
+      >
         <option value="" selected>Select your gender</option>
         @for (gender of genders; track gender.code) {
           <option value="{{gender.code}}">{{ gender.display }}</option>
         }
       </select>
+      @if (userInfo.controls.gender.invalid && userInfo.controls.gender.touched) {
+        <div class="invalid-feedback">
+          Please select a gender
+        </div>
+      }
     </div>
-    <div class="mb-4">
+    <div class="mb-2">
       <label for="email" class="form-label">Email</label>
       <input
         id="email"
         type="email"
         formControlName="email"
         class="form-control"
+        [ngClass]="{'is-invalid': userInfo.controls.email.invalid && userInfo.controls.email.touched, 'is-valid': userInfo.controls.email.valid && userInfo.controls.email.touched}"
         placeholder="Enter your email"/>
+      @if (userInfo.controls.email.invalid && userInfo.controls.email.touched) {
+        <div class="invalid-feedback">
+          Please enter a valid email
+        </div>
+      }
     </div>
-    <div class="mb-4">
+    <div class="mb-2">
       <label for="username" class="form-label">Username</label>
       <input
         id="username"
         type="text"
         formControlName="username"
         class="form-control"
+        [ngClass]="{'is-invalid': userInfo.controls.username.invalid && userInfo.controls.username.touched, 'is-valid': userInfo.controls.username.valid && userInfo.controls.username.touched}"
         placeholder="Enter your username"/>
+      @if (userInfo.controls.username.invalid && userInfo.controls.username.touched) {
+        <div class="invalid-feedback">
+          Please enter a username
+        </div>
+      }
     </div>
-    <div class="mb-4">
+    <div class="mb-2">
       <label for="password" class="form-label">Password</label>
       <input
         id="password"
         type="password"
         formControlName="password"
         class="form-control"
+        [ngClass]="{'is-invalid': userInfo.controls.password.invalid && userInfo.controls.password.touched, 'is-valid': userInfo.controls.password.valid && userInfo.controls.password.touched}"
         placeholder="Enter your password"/>
+      @if (userInfo.controls.password.invalid && userInfo.controls.password.touched) {
+        <div class="invalid-feedback">
+          @if (userInfo.controls.password.errors?.['minlength']) {
+            Password must be at least 8 characters
+          } @else {
+            Please enter a password
+          }
+        </div>
+      }
     </div>
-    <div class="mb-4">
+    <div class="mb-2">
       <label for="confirm_password" class="form-label">Confirm Password</label>
       <input
         id="confirm_password"
         type="password"
         formControlName="confirmPassword"
         class="form-control"
+        [ngClass]="{'is-invalid': userInfo.controls.confirmPassword.invalid && userInfo.controls.confirmPassword.touched, 'is-valid': userInfo.controls.confirmPassword.valid && userInfo.controls.confirmPassword.touched}"
         placeholder="Enter your password again"/>
+      @if (userInfo.controls.confirmPassword.invalid && userInfo.controls.confirmPassword.touched) {
+        <div class="invalid-feedback">
+          @if (userInfo.controls.confirmPassword.errors?.['passwordMismatch']) {
+            Passwords do not match
+          } @else {
+            Please enter a password
+          }
+        </div>
+      }
     </div>
-    <div class="d-grid gap-2">
+    <div class="d-grid gap-2 mt-4">
       <button class="btn btn-outline-primary" type="submit">Sign up</button>
     </div>
     <div class="text-center mt-4">

@@ -30,4 +30,8 @@ describe('RegistrationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a userInfo form group', () => {
+    expect(component.userInfo).toBeTruthy();
+  });
 });

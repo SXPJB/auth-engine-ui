@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthContainerComponent } from '../auth-container/auth-container.component';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-auth',
@@ -31,7 +32,7 @@ export class AuthComponent {
 
   onSubmit(): void {
     console.log('Submitting...');
-
     console.log(this.credentials.value);
+    Swal.fire('Submitted!', 'Your credentials have been submitted.', 'success');
   }
 }
