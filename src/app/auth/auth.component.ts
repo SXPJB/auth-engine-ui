@@ -8,7 +8,7 @@ import {
 } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthContainerComponent } from '../auth-container/auth-container.component';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-auth',
